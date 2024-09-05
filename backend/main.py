@@ -4,10 +4,13 @@ from models import UserAccount
 
 
 
+
 @app.route('/')
+# the above url '/' is the base url for the website
 def index():
     return render_template('index.html')
     # flask automatically looks in the templates directory
+    # flask environment is activated and run so it listens for http requests and whenever one is sent it is handled appropriately
 
 @app.route('/signup')
 def signup():
