@@ -2,9 +2,12 @@ from flask import request, jsonify, redirect, url_for, render_template
 from config import app, db
 from models import UserAccount
 
+
+
 @app.route('/')
 def index():
     return render_template('index.html')
+    # flask automatically looks in the templates directory
 
 if __name__ == "__main__":
     with app.app_context():

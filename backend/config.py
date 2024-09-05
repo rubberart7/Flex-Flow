@@ -7,4 +7,6 @@ CORS(app)
 # allows us to connect the frontend and backend
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///mydatabase.db'
 # stores a file that is a sqlite database and saved to the name
+
 db = SQLAlchemy(app)
+# creates database instance of the specified database

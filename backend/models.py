@@ -11,5 +11,7 @@ class UserAccount(db.Model):
         return {
             "id": self.id,
             "firstName": self.first_name,
+            "lastName": self.last_name,
             "email": self.email
         }
+    # allows me to send a json representation of the object to the frontend
