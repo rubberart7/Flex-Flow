@@ -9,6 +9,10 @@ def index():
     return render_template('index.html')
     # flask automatically looks in the templates directory
 
+@app.route('/signup')
+def signup():
+    return render_template('signup.html')
+
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()
