@@ -3,3 +3,12 @@
     margin: 0;
     padding: 0;
 }
+
+.signup-form {
+    border-color: blue;
+    border-radius: 20px;
+}
+
+button {
+    cursor: pointer;
+}
