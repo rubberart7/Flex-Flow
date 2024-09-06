@@ -1,5 +1,5 @@
 :root {
-    --lightblue: rgb(0, 217, 255);
+    --lightblue: rgb(0, 153, 255);
 }
 
 body {
@@ -55,6 +55,8 @@ button {
     background: none;
     font-size: 1rem;
     text-transform: uppercase;
+    color: inherit;
+    font-weight: bold;
 }
 
 footer {
