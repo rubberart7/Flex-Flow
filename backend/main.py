@@ -11,7 +11,7 @@ def get_accounts():
     return jsonify({"accounts": json_accounts})
     #converted into json data
 
-@app.route("/signup", methods=["POST"])
+@app.route("/create-user", methods=["POST"])
 def create_user():
     first_name = request.form.get('first-name')
     last_name = request.form.get('last-name')
