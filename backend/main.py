@@ -20,7 +20,7 @@ def create_user():
     password = request.form.get('password')
 
     if not first_name or not last_name or not username or not email or not password:
-        return (jsonify({"message": "You must include first name, last name, username, email and password"}), 400)
+        return render_template('signup.html', info=f"message: You must include first name, last name, username, email and password.")
         #returns error message and response error code is 400
     
     new_user = UserAccount(first_name=first_name, last_name=last_name, email=email, username=username, password=password)
@@ -31,9 +31,9 @@ def create_user():
         db.session.add(new_user)
         db.session.commit()
     except Exception as e:
-        return jsonify({"messsage": str(e)}), 400
+        return render_template('signup.html', info=f"Error: {str(e)}")
     
-    return jsonify({"messasge": "User Created!"}), 201
+    return render_template('signup.html', info="User Created!")
     # these are all returned as json objects so the frontend can retrieve and display it
 
 @app.route('/')
