@@ -1,0 +1,15 @@
+.form-wrapper {
+    position: relative;
+    width: 35vw;
+    height: 75vh;
+    border: 2px solid red;
+    border-radius: 20px;
+    color: whitesmoke;
+}
+
+body {
+    min-height: 100vh;
+    background: url('../images/gym.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+}

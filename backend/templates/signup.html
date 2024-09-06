@@ -1,23 +1,48 @@
-{% extends 'base.html' %} {% block head %}{% endblock %} {% block scripts %}{%
-endblock %} {% block body %}
-<form class="signup-form" action="/create-user" method="POST">
-  <h1>Sign Up</h1>
-  <label for="first-name">First Name: </label>
-  <input type="text" id="first-name" name="first-name" required /><br /><br />
+{% extends 'base.html' %} {% block head %}<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/signup.css') }}"
+/>{% endblock %} {% block scripts %}{% endblock %} {% block body %}
+<div class="form-wrapper">
+  <form class="signup-form" action="/create-user" method="POST">
+    <h2>Sign Up</h2>
+    <div class="input-box">
+      <span class="icon"><ion-icon name="person"></ion-icon></span>
+      <label for="first-name">First Name: </label>
+      <input type="text" id="first-name" name="first-name" required />
+    </div>
 
-  <label for="last-name">Last Name: </label>
-  <input type="text" id="last-name" name="last-name" required /><br /><br />
+    <div class="input-box">
+      <span class="icon"><ion-icon name="person"></ion-icon></span>
+      <label for="last-name">Last Name: </label>
+      <input type="text" id="last-name" name="last-name" required />
+    </div>
 
-  <label for="email">Email:</label>
-  <input type="email" id="email" name="email" required /><br /><br />
+    <div class="input-box">
+      <span class="icon"><ion-icon name="mail"></ion-icon></span>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required />
+    </div>
 
-  <label for="username">Username:</label>
-  <input type="text" id="username" name="username" required /><br /><br />
+    <div class="input-box">
+      <span class="icon"></span>
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required />
+    </div>
 
-  <label for="password">Password:</label>
-  <input type="password" id="password" name="password" required /><br /><br />
+    <div class="input-box">
+      <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required />
+    </div>
 
-  <button type="submit">Sign Up</button>
-</form>
+    <label for="accept-conditions"
+      ><input type="checkbox" />I accept the terms and conditions</label
+    >
+    <button type="submit">Sign Up</button>
+    <p id="to-login">
+      Already have an account? <a href="#" class="login-link">Log In</a>
+    </p>
+  </form>
+</div>
 <h1>Info: {{info}}</h1>
 {% endblock %}

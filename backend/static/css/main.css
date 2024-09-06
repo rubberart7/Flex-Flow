@@ -1,6 +1,6 @@
 :root {
     --lightblue: rgb(0, 153, 255);
-    --testcolor: rgb(0, 136, 0);
+    --testcolor: rgb(0, 0, 255);
 }
 
 body {
@@ -38,7 +38,7 @@ button {
     /* remains at the top even when scrolling */
     font-size: 1.6rem;
     align-items: center;
-    background-color: var(--lightblue);
+    /* background-color: var(--lightblue); */
     color: whitesmoke;
 
 }
