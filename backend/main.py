@@ -47,6 +47,18 @@ def index():
 def signup():
     return render_template('signup.html')
 
+@app.route('/workout-plans')
+def workoutPlans():
+    return render_template('workoutplans.html')
+
+@app.route('/meal-plans')
+def mealPlans():
+    return render_template('mealplans.html')
+
+@app.route('/exercise-library')
+def exerciseLibrary():
+    return render_template('exercises.html')
+
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()
