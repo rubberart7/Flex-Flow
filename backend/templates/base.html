@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home Page</title>
+    <title>FlexFlow Home</title>
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='css/main.css')}}"
@@ -11,6 +11,16 @@
     {% block head %}{% endblock %}
   </head>
   <body>
+    <nav class="navBar">
+      <h1 class="logoName">FlexFlow</h1>
+      <div class="navBarButtons">
+        <button class="home-button">Home</button>
+        <button class="workout-plans">Workout Plans</button>
+        <button class="exercise-library">Exercises</button>
+        <button class="meal-plans">Meal Plans</button>
+        <button class="account-creation">Profile</button>
+      </div>
+    </nav>
     {% block body %}{% endblock %}
     <footer>
       <p>&copy; 2024 Flex-Flow</p>

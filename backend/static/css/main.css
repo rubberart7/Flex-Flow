@@ -1,3 +1,11 @@
+:root {
+    --lightblue: rgb(0, 217, 255);
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -12,3 +20,47 @@
 button {
     cursor: pointer;
 }
+
+.logoName {
+    margin-left: 1vw; /* Add some spacing for the logo */
+    font-weight: bold;
+    justify-self: start;
+}
+
+.navBar {
+    width: 100vw;
+    max-height: 10vh;
+    display: grid;
+    grid-template-rows: repeat(1, 10vh);
+    grid-template-columns: 1fr 2fr;
+    position: sticky;
+    /* remains at the top even when scrolling */
+    font-size: 1.6rem;
+    align-items: center;
+    background-color: var(--lightblue);
+    color: whitesmoke;
+
+}
+
+.navBarButtons {
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    gap: 2vw;
+    justify-self: end; /* Align buttons to the right */
+    margin-right: 1vw;
+}
+
+.navBarButtons button {
+    border: none;
+    background: none;
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+footer {
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: bolder;
+    padding: 20px;
+}
+
