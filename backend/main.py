@@ -15,15 +15,15 @@ def get_accounts():
 def create_user():
     first_name = request.form.get('first-name')
     last_name = request.form.get('last-name')
-    username = request.form.get('username')
     email = request.form.get('email')
+    username = request.form.get('username')
     password = request.form.get('password')
 
-    if not first_name or last_name or username or email or password:
+    if not first_name or not last_name or not username or not email or not password:
         return (jsonify({"message": "You must include first name, last name, username, email and password"}), 400)
         #returns error message and response error code is 400
     
-    new_user = UserAccount(first_name=first_name, last_name=last_name, username=username, email=email, password=password)
+    new_user = UserAccount(first_name=first_name, last_name=last_name, email=email, username=username, password=password)
     #SQLAlchemy models inherit from db.Model, which includes a default __init__ method. This method allows you to set attributes directly 
     #by passing keyword arguments that correspond to the column names in the model.
     #the keyword arguments match the column names defined in the model. The default constructor sets these attributes directly.
@@ -36,16 +36,6 @@ def create_user():
     return jsonify({"messasge": "User Created!"}), 201
     # these are all returned as json objects so the frontend can retrieve and display it
 
-# @app.route("/update_account/<int: user_id>", methods=["PATCH"])
-# def update_account(user_id):
-#     user_account = UserAccount.query.get(user_id)
-#     if not user:
-#         return jsonify ({"message": "User not found"}), 404
-
-
-    
-    
-    
 @app.route('/')
 # the above url '/' is the base url for the website
 def index():

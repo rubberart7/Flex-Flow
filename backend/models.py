@@ -10,9 +10,9 @@ class UserAccount(db.Model):
     #in sqlachemy when a column is defined as a primary key and uses an integer type its automatically set to auto-increment by defulat, new row starts at 1 and increments for each row
     first_name = db.Column(db.String(80), unique=False, nullable=False)
     last_name = db.Column(db.String(80), unique=False, nullable=False)
-    username = db.column(db.String(80), unique=True, nullable=False)
-    password = db.column(db.String(80), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
+    username = db.Column(db.String(80), unique=True, nullable=False)
+    password = db.Column(db.String(80), unique=True, nullable=False)
     # add stuff for the username and password later
 
     def to_json(self):
