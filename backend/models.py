@@ -15,13 +15,31 @@ class UserAccount(db.Model):
     password = db.Column(db.String(80), unique=True, nullable=False)
     # add stuff for the username and password later
 
+    def getID(self):
+        return self.id
+
+    def getFirstName(self):
+        return self.first_name
+
+    def getLastName(self):
+        return self.last_name
+
+    def getEmail(self):
+        return self.email
+
+    def getUserName(self):
+        return self.username
+
+    def getPassword(self):
+        return self.password
+    
     def to_json(self):
         return {
             "id": self.id,
-            "firstName": self.first_name,
-            "lastName": self.last_name,
-            "username": self.username,
-            "password": self.password,
-            "email": self.email
+            "firstName": self.__first_name,
+            "lastName": self.__last_name,
+            "username": self.__username,
+            "password": self.__password,
+            "email": self.__email
         }
     # allows me to send a json representation of the object to the frontend

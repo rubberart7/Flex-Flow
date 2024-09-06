@@ -20,8 +20,13 @@ def create_user():
     password = request.form.get('password')
 
     if not first_name or not last_name or not username or not email or not password:
-        return render_template('signup.html', info=f"message: You must include first name, last name, username, email and password.")
-        #returns error message and response error code is 400
+         info = """You must include:
+        - First name
+        - Last name
+        - Username
+        - Email
+        - Password"""
+         return render_template('signup.html', info=info)
     
     new_user = UserAccount(first_name=first_name, last_name=last_name, email=email, username=username, password=password)
     #SQLAlchemy models inherit from db.Model, which includes a default __init__ method. This method allows you to set attributes directly 
@@ -31,9 +36,19 @@ def create_user():
         db.session.add(new_user)
         db.session.commit()
     except Exception as e:
-        return render_template('signup.html', info=f"Error: {str(e)}")
+        info=f"Error: {str(e)}"
+        return render_template('signup.html', info=info)
     
-    return render_template('signup.html', info="User Created!")
+    info = "User Created Successfully!"
+    info += f"User ID: {new_user.getID()}"
+    info += f" First Name: {new_user.getFirstName()}"
+    info += f" Last Name: {new_user.getLastName()}"
+    info += f" Username: {new_user.getUserName()}"
+    info += f" Email: {new_user.getEmail()}"
+    info += f" Password: {new_user.getPassword()}"
+
+    return render_template('signup.html', info=info)
+
     # these are all returned as json objects so the frontend can retrieve and display it
 
 @app.route('/')
@@ -61,6 +76,7 @@ def exerciseLibrary():
 
 if __name__ == "__main__":
     with app.app_context():
+        db.drop_all()
         db.create_all()
         # checks if we have the database and if we dont we are going to create it
 
