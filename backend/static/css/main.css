@@ -58,6 +58,11 @@ button {
     text-transform: uppercase;
     color: inherit;
     font-weight: bold;
+    transition: transform 0.75s ease;
+}
+
+.navBarButtons button:hover {
+    transform: scale(1.2);
 }
 
 footer {
