@@ -1,5 +1,6 @@
 :root {
     --lightblue: rgb(0, 153, 255);
+    --testcolor: rgb(0, 136, 0);
 }
 
 body {
@@ -63,6 +64,8 @@ footer {
     text-align: center;
     font-size: 1.3rem;
     font-weight: bolder;
-    padding: 20px;
+    padding: 1.5vw;
+    background-color: var(--testcolor);
+    color: whitesmoke;
 }
 
