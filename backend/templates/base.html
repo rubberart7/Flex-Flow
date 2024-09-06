@@ -6,9 +6,11 @@
     <title>FlexFlow Home</title>
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='css/css/main.css')}}"
+      href="{{ url_for('static', filename='css/main.css')}}"
     />
     {% block head %}{% endblock %}
+    <script src="{{ url_for('static', filename='js/base.js') }}" defer></script>
+    {% block scripts %}{% endblock %}
   </head>
   <body>
     <nav class="navBar">
