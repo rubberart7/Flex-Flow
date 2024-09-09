@@ -51,22 +51,19 @@ def login():
     entered_username = request.form.get('username')
     entered_password = request.form.get('password')
 
-
     attempted_user = None
     accounts = get_accounts()
+
     for user in accounts:
         if user.getUserName() == entered_username:
             attempted_user = user
     if attempted_user == None:
-        loggedIn = False
         return "Username not found"
     
     if attempted_user.getPassword() == entered_password:
-        loggedIn = True
         return "The username is correct, successful login!"
     else:
-        loggedIn = False
-        return "Please enter the username or password."
+        return "Please enter the correct password"
 
     
     
