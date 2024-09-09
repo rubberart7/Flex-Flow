@@ -1,19 +1,40 @@
-.form-wrapper {
+#signup-form-wrapper {
+    width: 30vw;
     position: relative;
-    width: 35vw;
-    height: 75vh;
-    border: 2px solid red;
+    height: 60vh;
+    border: 2px solid rgba(255, 255, 255, .5);
     border-radius: 20px;
     color: whitesmoke;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    margin-top: 2vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* BUG: when minimize horizontally words squeeze on top, try setting max or min width of the area or something*/
 }
 
+h1 {
+    color: whitesmoke;
+}
 body {
     min-height: 100vh;
     background: url('../images/gym.jpg') no-repeat;
     background-size: cover;
     background-position: center;
 }
-
+/* main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
 .navBar {
-    background: none;
+    background: var(--testcolor);
 }
+#signup-button {
+    display: block;
+    justify-content: center;
+}
+
+

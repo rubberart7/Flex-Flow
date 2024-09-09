@@ -1,9 +1,11 @@
 {% extends 'base.html' %} {% block head %}<link
   rel="stylesheet"
   href="{{ url_for('static', filename='css/signup.css') }}"
-/>{% endblock %} {% block scripts %}{% endblock %} {% block body %}
-<div class="form-wrapper">
-  <form class="signup-form" action="/create-user" method="POST">
+/>{% endblock %} {% block scripts %}
+<script src="{{ url_for('static', filename='js/signup.js')}}" defer></script>
+{% endblock %} {% block body %}
+<div id="signup-form-wrapper">
+  <form id="signup-form" action="/create-user" method="POST">
     <h2>Sign Up</h2>
     <div class="input-box">
       <span class="icon"><ion-icon name="person"></ion-icon></span>
@@ -24,7 +26,7 @@
     </div>
 
     <div class="input-box">
-      <span class="icon"></span>
+      <span class="icon"><ion-icon name="person-circle"></ion-icon></span>
       <label for="username">Username:</label>
       <input type="text" id="username" name="username" required />
     </div>
@@ -38,9 +40,33 @@
     <label for="accept-conditions"
       ><input type="checkbox" />I accept the terms and conditions</label
     >
-    <button type="submit">Sign Up</button>
-    <p id="to-login">
-      Already have an account? <a href="#" class="login-link">Log In</a>
+
+    <button id="signup-button"type="submit">Sign Up</button>
+
+    <p id="to-login">Already have an account? <a href="#" id="login-link">Log In</a></p>
+  </form>
+
+  <form class="hidden" id="login-form" action="/login" method="POST"></form>
+    <h2>Login</h2>
+
+    <div class="input-box">
+      <span class="icon"><ion-icon name="person-circle"></ion-icon></span>
+      <label for="username">Username:</label>
+      <input type="text" id="login-username" name="username" required />
+    </div>
+
+    <div class="input-box">
+      <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+      <label for="password">Password:</label>
+      <input type="password" id="login-password" name="password" required />
+    </div>
+
+    <label for="accept-conditions"
+      ><input type="checkbox" />I accept the terms and conditions</label
+    >
+    <button id="login-button"type="submit">Log In</button>
+    <p id="to-signup">
+      Don't have have an account? <a href="#" id="signup-link">Sign Up</a>
     </p>
   </form>
 </div>
