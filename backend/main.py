@@ -21,7 +21,7 @@ def create_user():
 
     if not first_name or not last_name or not username or not email or not password:
          info = """You must include:
-        - First name
+        - First name 
         - Last name
         - Username
         - Email

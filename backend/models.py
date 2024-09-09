@@ -36,10 +36,10 @@ class UserAccount(db.Model):
     def to_json(self):
         return {
             "id": self.id,
-            "firstName": self.__first_name,
-            "lastName": self.__last_name,
-            "username": self.__username,
-            "password": self.__password,
-            "email": self.__email
+            "firstName": self.first_name,
+            "lastName": self.last_name,
+            "username": self.username,
+            "password": self.password,
+            "email": self.email
         }
     # allows me to send a json representation of the object to the frontend
