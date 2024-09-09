@@ -1,10 +1,12 @@
 from flask import request, jsonify, redirect, url_for, render_template
 from config import app, db
+from werkzeug.security import generate_password_hash, check_password_hash
 from models import UserAccount
 
 
 def get_accounts():
     accounts = UserAccount.query.all()
+    # gets a list of all UserAccount objects
     return accounts
 
 @app.route("/create-user", methods=["POST"])
@@ -24,7 +26,7 @@ def create_user():
         - Password"""
          return render_template('signup.html', info=info)
     
-    new_user = UserAccount(first_name=first_name, last_name=last_name, email=email, username=username, password=password)
+    new_user = UserAccount(first_name=first_name, last_name=last_name, email=email, username=username, password=generate_password_hash(password))
     #SQLAlchemy models inherit from db.Model, which includes a default __init__ method. This method allows you to set attributes directly 
     #by passing keyword arguments that correspond to the column names in the model.
     #the keyword arguments match the column names defined in the model. The default constructor sets these attributes directly.
@@ -60,13 +62,11 @@ def login():
     if attempted_user == None:
         return "Username not found"
     
-    if attempted_user.getPassword() == entered_password:
+    if check_password_hash(attempted_user.getPassword(), entered_password):
+        # firs argument is a stored hash and the second is the hashed version of the other password
         return "The username is correct, successful login!"
     else:
         return "Please enter the correct password"
-
-    
-    
 
 @app.route('/')
 # the above url '/' is the base url for the website
