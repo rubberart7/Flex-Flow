@@ -2,14 +2,10 @@ from flask import request, jsonify, redirect, url_for, render_template
 from config import app, db
 from models import UserAccount
 
-@app.route("/accounts", methods=["GET"])
+
 def get_accounts():
     accounts = UserAccount.query.all()
-    #gets all of the accounts and places them in a list
-    json_accounts = list(map(lambda account: account.to_json(), accounts))
-    #for each account in the accounts list it turns them into json object and each is in the map object, so the map object is turned into a list instead
-    return jsonify({"accounts": json_accounts})
-    #converted into json data
+    return accounts
 
 @app.route("/create-user", methods=["POST"])
 def create_user():
@@ -50,6 +46,30 @@ def create_user():
     return render_template('signup.html', info=info)
 
     # these are all returned as json objects so the frontend can retrieve and display it
+@app.route('/login', methods=['POST'])
+def login():
+    entered_username = request.form.get('username')
+    entered_password = request.form.get('password')
+
+
+    attempted_user = None
+    accounts = get_accounts()
+    for user in accounts:
+        if user.getUserName() == entered_username:
+            attempted_user = user
+    if attempted_user == None:
+        loggedIn = False
+        return "Username not found"
+    
+    if attempted_user.getPassword() == entered_password:
+        loggedIn = True
+        return "The username is correct, successful login!"
+    else:
+        loggedIn = False
+        return "Please enter the username or password."
+
+    
+    
 
 @app.route('/')
 # the above url '/' is the base url for the website
