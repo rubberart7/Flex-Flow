@@ -1,8 +1,30 @@
 from flask import request, jsonify, redirect, url_for, render_template
+import requests
 from config import app, db
 from werkzeug.security import generate_password_hash, check_password_hash
 from models import UserAccount
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
+
+def handle_workouts_api():
+    wger_workouts_key = os.getenv("WGER_API_KEY")
+    exercises_url = 'https://wger.de/api/v2/exercise'
+
+    headers = {
+        "Authorization": f"Token {wger_workouts_key}"
+    }
+    params = {
+        "language": 2
+    }
+    wger_key_response = requests.get(exercises_url, headers=headers, params=params)
+    print(wger_key_response.json())
+
+handle_workouts_api()
+
+def wp_object_creator():
+    pass
 
 def get_accounts():
     accounts = UserAccount.query.all()
