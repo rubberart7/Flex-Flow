@@ -44,12 +44,7 @@ class UserAccount(db.Model):
         }
 
 class WorkoutPlan():
-    def __init__(self, name, description, muscle_groups, sets, reps):
-        self.__name = name
-        self.__description = description
-        self.__muscle_groups = muscle_groups
-        self.__sets = sets
-        self.__reps = reps
+    pass
         
 
 class Exercise():
