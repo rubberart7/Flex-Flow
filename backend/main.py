@@ -10,7 +10,7 @@ load_dotenv()
 
 def handle_workouts_api():
     wger_workouts_key = os.getenv("WGER_API_KEY")
-    exercises_url = 'https://wger.de/api/v2/exercise'
+    exercises_url = 'https://wger.de/api/v2/exercise/'
 
     headers = {
         "Authorization": f"Token {wger_workouts_key}"
@@ -21,9 +21,9 @@ def handle_workouts_api():
     wger_key_response = requests.get(exercises_url, headers=headers, params=params)
     print(wger_key_response.json())
 
-handle_workouts_api()
-
-def wp_object_creator():
+def exercise_obj_creator():
+    pass
+def wp_obj_creator():
     pass
 
 def get_accounts():
@@ -115,7 +115,6 @@ def exerciseLibrary():
 
 if __name__ == "__main__":
     with app.app_context():
-        db.drop_all()
         db.create_all()
         # checks if we have the database and if we dont we are going to create it
 

@@ -42,4 +42,21 @@ class UserAccount(db.Model):
             "password": self.password,
             "email": self.email
         }
+
+class WorkoutPlan():
+    def __init__(self, name, description, muscle_groups, sets, reps):
+        self.__name = name
+        self.__description = description
+        self.__muscle_groups = muscle_groups
+        self.__sets = sets
+        self.__reps = reps
+        
+
+class Exercise():
+    def __init__(self, name, description, muscle_groups, sets, reps):
+        self.__name = name
+        self.__description = description
+        self.__muscle_groups = muscle_groups
+        self.__sets = sets
+        self.__reps = reps
     # allows me to send a json representation of the object to the frontend
