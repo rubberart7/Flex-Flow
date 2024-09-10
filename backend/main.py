@@ -63,7 +63,7 @@ def login():
         return "Username not found"
     
     if check_password_hash(attempted_user.getPassword(), entered_password):
-        # firs argument is a stored hash and the second is the hashed version of the other password
+        # first argument is a stored hash and the second is the hashed version of the other password
         return "The username is correct, successful login!"
     else:
         return "Please enter the correct password"
