@@ -1,4 +1,4 @@
-from config import db
+from .config import db
 #imports the db object from the config module and db is an instance of SQLAlchemy
 
 class UserAccount(db.Model):
