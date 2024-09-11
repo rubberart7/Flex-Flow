@@ -1,8 +1,8 @@
 from flask import request, jsonify, redirect, url_for, render_template
 import requests
-from config import app, db
+from .config import app, db
 from werkzeug.security import generate_password_hash, check_password_hash
-from models import UserAccount
+from .models import UserAccount
 import os
 from dotenv import load_dotenv
 
