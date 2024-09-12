@@ -18,8 +18,11 @@ def handle_workouts_api():
     params = {
         "language": 2
     }
-    wger_key_response = requests.get(exercises_url, headers=headers, params=params)
-    print(wger_key_response.json())
+    wger_key_data = requests.get(exercises_url, headers=headers, params=params).json()
+    all_exercise_data = wger_key_data['results']
+    for exercise in all_exercise_data:
+        print(f"The exercise is {exercise['name']} and the description is {exercise['description']}.")
+handle_workouts_api()
 
 def exercise_obj_creator():
     pass
@@ -119,7 +122,6 @@ def exerciseLibrary():
 
 if __name__ == "__main__":
     with app.app_context():
-        db.drop_all()
         db.create_all()
         # checks if we have the database and if we dont we are going to create it
 
