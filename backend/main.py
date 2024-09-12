@@ -35,13 +35,13 @@ def create_user():
     password = request.form.get('password')
 
     if not first_name or not last_name or not username or not email or not password:
-         info = """You must include:
-        - First name 
-        - Last name
-        - Username
-        - Email
-        - Password"""
-         return render_template('signup.html', info=info)
+         flash("You must include: ", "error")
+         flash("First Name", "info")
+         flash("Last Name", "info")
+         flash("Email", "info")
+         flash("Username", "info")
+         flash("Password", "info")
+         return redirect(url_for("notifications"))
     
     new_user = UserAccount(first_name=first_name, last_name=last_name, email=email, username=username, password=generate_password_hash(password))
     #SQLAlchemy models inherit from db.Model, which includes a default __init__ method. This method allows you to set attributes directly 
@@ -51,18 +51,17 @@ def create_user():
         db.session.add(new_user)
         db.session.commit()
     except Exception as e:
-        info=f"Error: {str(e)}"
-        return render_template('signup.html', info=info)
+        flash(f"Error: {str(e)}", "error")
+        return redirect(url_for('notifications'))
     
-    info = "User Created Successfully!"
-    info += f"User ID: {new_user.getID()}"
-    info += f" First Name: {new_user.getFirstName()}"
-    info += f" Last Name: {new_user.getLastName()}"
-    info += f" Username: {new_user.getUserName()}"
-    info += f" Email: {new_user.getEmail()}"
-    info += f" Password: {new_user.getPassword()}"
+    flash("User Created Successfully!", "success")
+    flash(f"User ID: {new_user.getID()}", "info")
+    flash(f"First Name: {new_user.getFirstName()}", "info")
+    flash(f"Last Name: {new_user.getLastName()}", "info")
+    flash(f"Username: {new_user.getUserName()}", "info")
+    flash(f"Email: {new_user.getEmail()}", "info")
 
-    return render_template('signup.html', info=info)
+    return redirect(url_for('notifications'))
 
     # these are all returned as json objects so the frontend can retrieve and display it
 @app.route('/login', methods=['POST'])
@@ -73,13 +72,20 @@ def login():
     attempted_user = UserAccount.query.filter_by(username=entered_username).first()
     # the account table represents a table in the database and its filtered by the attempted username and returns the first occurence of it
     if attempted_user == None:
-        return "Username not found."
+        flash("Username not found.", "error")
+        return redirect(url_for('notifications'))
     
     if check_password_hash(attempted_user.getPassword(), entered_password):
         # first argument is a stored hash and the second is the hashed version of the other password
-        return "The username is correct, successful login!"
+        flash("The username is correct, successful login!", "success")
+        return redirect(url_for('notifications'))
     else:
-        return "Please enter the correct password"
+        flash("Please enter the correct password")
+        return redirect(url_for('notifications'))
+    
+@app.route('/notifications')
+def notifications():
+    return render_template("notifications.html")
 
 @app.route('/')
 # the above url '/' is the base url for the website
