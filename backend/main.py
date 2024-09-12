@@ -64,7 +64,7 @@ def create_user():
     return redirect(url_for('notifications'))
 
     # these are all returned as json objects so the frontend can retrieve and display it
-@app.route('/login', methods=['POST'])
+@app.route('/login', methods=['POST', "GET"])
 def login():
     entered_username = request.form.get('username')
     entered_password = request.form.get('password')
@@ -77,11 +77,18 @@ def login():
     
     if check_password_hash(attempted_user.getPassword(), entered_password):
         # first argument is a stored hash and the second is the hashed version of the other password
+        session["logged_in"] = True
+        session["username"] = attempted_user.getUserName()
         flash("The username is correct, successful login!", "success")
         return redirect(url_for('notifications'))
     else:
         flash("Please enter the correct password")
         return redirect(url_for('notifications'))
+    
+@app.route('/logout')
+def logout():
+    # comeback to the logout system
+    pass
     
 @app.route('/notifications')
 def notifications():
