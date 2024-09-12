@@ -12,6 +12,7 @@ app = Flask(__name__)
 CORS(app)
 # allows us to connect the frontend and backend, allows Flask application to accept requests from diff origins(domains) useful for backend and frotend being hosted on diff domains or ports
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///mydatabase.db'
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 # This specifies that you are using SQLite as the database engine, and the database file will be named mydatabase.db in the root directory of your project.
 
 db = SQLAlchemy(app)

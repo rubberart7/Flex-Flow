@@ -1,4 +1,4 @@
-from flask import request, jsonify, redirect, url_for, render_template
+from flask import request, jsonify, redirect, url_for, render_template, session, flash
 import requests
 from .config import app, db
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -25,11 +25,6 @@ def exercise_obj_creator():
     pass
 def wp_obj_creator():
     pass
-
-def get_accounts():
-    accounts = UserAccount.query.all()
-    # gets a list of all UserAccount objects
-    return accounts
 
 @app.route("/create-user", methods=["POST"])
 def create_user():
@@ -75,14 +70,10 @@ def login():
     entered_username = request.form.get('username')
     entered_password = request.form.get('password')
 
-    attempted_user = None
-    accounts = get_accounts()
-
-    for user in accounts:
-        if user.getUserName() == entered_username:
-            attempted_user = user
+    attempted_user = UserAccount.query.filter_by(username=entered_username).first()
+    # the account table represents a table in the database and its filtered by the attempted username and returns the first occurence of it
     if attempted_user == None:
-        return "Username not found"
+        return "Username not found."
     
     if check_password_hash(attempted_user.getPassword(), entered_password):
         # first argument is a stored hash and the second is the hashed version of the other password
@@ -115,6 +106,7 @@ def exerciseLibrary():
 
 if __name__ == "__main__":
     with app.app_context():
+        db.drop_all()
         db.create_all()
         # checks if we have the database and if we dont we are going to create it
 
