@@ -5,6 +5,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from .models import UserAccount
 import os
 from dotenv import load_dotenv
+from bs4 import BeautifulSoup
 
 load_dotenv()
 
@@ -22,6 +23,7 @@ def handle_workouts_api():
     all_exercise_data = wger_key_data['results']
     for exercise in all_exercise_data:
         print(f"The exercise is {exercise['name']} and the description is {exercise['description']}.")
+        # the idea is to check every description part and then change it
 handle_workouts_api()
 
 def exercise_obj_creator():
