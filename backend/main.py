@@ -24,7 +24,7 @@ def handle_workouts_api():
     for exercise in all_exercise_data:
         print(f"The exercise is {exercise['name']} and the description is {exercise['description']}.")
         # the idea is to check every description part and then change it
-handle_workouts_api()
+# handle_workouts_api()
 
 def exercise_obj_creator():
     pass
