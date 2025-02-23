@@ -24,7 +24,13 @@ def handle_workouts_api():
     for exercise in all_exercise_data:
         print(f"The exercise is {exercise['name']} and the description is {exercise['description']}.")
         # the idea is to check every description part and then change it
-# handle_workouts_api()
+    return all_exercise_data[:5]
+
+
+@app.route('/exercise-library')
+def exerciseLibrary():
+    exercises = handle_workouts_api()
+    return render_template('exercises.html', exercises=exercises)
 
 def exercise_obj_creator():
     pass
@@ -118,9 +124,9 @@ def workoutPlans():
 def mealPlans():
     return render_template('mealplans.html')
 
-@app.route('/exercise-library')
-def exerciseLibrary():
-    return render_template('exercises.html')
+# @app.route('/exercise-library')
+# def exerciseLibrary():
+#     return render_template('exercises.html')
 
 if __name__ == "__main__":
     with app.app_context():
