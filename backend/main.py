@@ -21,10 +21,10 @@ def handle_workouts_api():
     }
     wger_key_data = requests.get(exercises_url, headers=headers, params=params).json()
     all_exercise_data = wger_key_data['results']
-    for exercise in all_exercise_data:
-        print(f"The exercise is {exercise['name']} and the description is {exercise['description']}.")
+    # for exercise in all_exercise_data:
+    #     print(f"The exercise is {exercise['name']} and the description is {exercise['description']}.")
         # the idea is to check every description part and then change it
-    return all_exercise_data[:5]
+    return all_exercise_data[:4]
 
 
 @app.route('/exercise-library')
