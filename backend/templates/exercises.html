@@ -1,4 +1,12 @@
 {% extends 'base.html' %} {% block head %}{% endblock %} {% block scripts %}{%
 endblock %} {% block body %}
 <h1>Exercise Plans</h1>
+
+  {% for exercise in exercises %}
+    <div class="exercise">
+      <h2>{{ exercise.name }}</h2>
+      <p>{{ exercise.description }}</p>
+    </div>
+  {% endfor %}
+
 {% endblock %}
